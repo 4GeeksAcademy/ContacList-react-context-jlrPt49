@@ -1,18 +1,31 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			contact: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
+					name: "Mike Anamendolla",
+					direction: "5846 calle chacaito",
+					phone: "(888) 266-322",
+					email: "mike.ana@example.com",
+					id: "1"
 				},
 				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+					name: "Mike Anamendolla",
+					direction: "5846 calle chacaito",
+					phone: "(888) 266-322",
+					email: "mike.ana@example.com",
+					id: "1"
+				},
+				{
+					name: "Mike Anamendolla",
+					direction: "5846 calle chacaito",
+					phone: "(888) 266-322",
+					email: "mike.ana@example.com",
+					id: "1"
+				},
+			
+			],
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -20,10 +33,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/agendaJoseRegueiro")
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data);
+						setStore({ contact: data });
+					})
+					.catch((error) => {
+						console.error("Error fetching data:", error);
+					});
 			},
+
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -36,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				//reset the global store
-				setStore({ demo: demo });
+				setStore({ contact: contact });
 			}
 		}
 	};
