@@ -5,10 +5,10 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Form } from "./views/form";
 import { Single } from "./views/single";
+import { EditForm } from "./views/editForm"
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
 
 
 //create your first component
@@ -25,6 +25,7 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/form" element={<Form />} />
+						<Route path="/editForm" element={<EditForm />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="*" element={<h1>Nada por aqui, te me perdiste!</h1>} />
 					</Routes>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/form.css";
+import "../../styles/editForm.css";
 
 
-export const Form = () => {
+export const EditForm = () => {
 	const { store, actions } = useContext(Context);
 	const [name, setName] = useState("");
 	const [mail, setMail] = useState("");

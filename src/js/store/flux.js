@@ -37,9 +37,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => console.log(data));
 			},
 
-			cambiarNombre: (newContact) =>{
-				console.log(`"${newContact.full_name}"`)
-			}
+			deleteContact: (id) => {
+				const deleteOptions = {
+					method: "DELETE",
+					headers: { 'Content-Type': 'application/json'  },
+				};
+				fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, deleteOptions)
+					.then(response => response.json())
+					.then(data=>console.log(data));
+			},
+
+			// editContact: (id) => {
+			// 	const editOptions = {
+			// 		method: "PUT",
+			// 	}
+			// }
+
+			
 			
 		}
 	};
