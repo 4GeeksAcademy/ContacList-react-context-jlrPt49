@@ -11,36 +11,45 @@ export const EditForm = () => {
 	const [phone, setPhone] = useState("");
 	const [address, setAddress] = useState("");
 
-	const inputNombre = (e) =>{
-		setName(e.target.value)
-		actions.cambiarNombre(e.target.value)
+	
+
+	const inputNombre = (eName) =>{
+		setName(eName.target.value)
+		
 	};
 
-	const inputMail = (i) =>{
-		setMail(i.target.value)
-		actions.cambiarNombre(i.target.value)
+	const inputMail = (eMail) =>{
+		setMail(eMail.target.value)
+		
 	};
 
-	const inputPhone = (o) =>{
-		setPhone(o.target.value)
-		actions.cambiarNombre(o.target.value)
+	const inputPhone = (ePhone) =>{
+		setPhone(ePhone.target.value)
+	
 	};
 
-	const inputAddress = (u) =>{
-		setAddress(u.target.value)
-		actions.cambiarNombre(u.target.value)
+	const inputAddress = (eAddress) =>{
+		setAddress(eAddress.target.value)
+	
 	};
+
+	const GetId = (id) =>{
+		console.log(`El id del elemento es ----->${store.contact.id}`)
+	}
+
 
 
 
 	const handleSave = () =>{
-		actions.addContact({
+		actions.editContact(id,{
 			full_name: name,
 			email: mail, 
 			phone: phone,
 			address: address,
 			
-	});
+	},
+			contactId
+	);
 		setName("");
 		setMail("");
 		setPhone("");
@@ -49,7 +58,7 @@ export const EditForm = () => {
 
 	return (
 		<>
-		<h1>Add a new contact</h1>
+		<h1>Edit a contact</h1>
 		<div className="container">
 		<label>Full name</label>
 		<input onChange={inputNombre} value={name} placeholder="Full name"></input>
@@ -79,6 +88,10 @@ export const EditForm = () => {
 			<button>boton pa volver</button>
 		</Link>
 		</div>
+		<div className="container">
+		<button onClick={() =>GetId(store.contact)}>Obtener id</button>
+		</div>
+
 
 		</>
 

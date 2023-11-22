@@ -1,10 +1,8 @@
-const getState = ({ getStore, getActions, setStore }) => {
+const getState = ({ getStore, getActions, setStore }) => {  
 	return {
 		store: {
-			contact: [
+			contact: [],
 			
-			],
-
 		},
 		actions: {
 
@@ -12,13 +10,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://playground.4geeks.com/apis/fake/contact/agenda/agendaJoseRegueiro")
 					.then((response) => response.json())
 					.then((data) => {
-						console.log(data);
 						setStore({ contact: data });
 					})
-					.catch((error) => {
-						console.error("Error fetching data:", error);
-					});
-			},
+	},
 
 			addContact(newContact) {
 				const requestOptions = {
@@ -33,25 +27,71 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				fetch('https://playground.4geeks.com/apis/fake/contact/', requestOptions)
-					.then(response => response.json())
-					.then(data => console.log(data));
-			},
+
+
+	},
 
 			deleteContact: (id) => {
 				const deleteOptions = {
 					method: "DELETE",
 					headers: { 'Content-Type': 'application/json'  },
+					
 				};
 				fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, deleteOptions)
 					.then(response => response.json())
-					.then(data=>console.log(data));
-			},
+					.then((data =>{ 
+						fetch("https://playground.4geeks.com/apis/fake/contact/agenda/agendaJoseRegueiro")
+							.then((response) => response.json())
+							.then((data) => {
+								setStore({ contact: data });
+							})
+					
 
-			// editContact: (id) => {
-			// 	const editOptions = {
-			// 		method: "PUT",
-			// 	}
-			// }
+					}))
+	},
+				
+
+			editContact: (editContact, id) => {
+ 				const editOptions = {
+				method: "PUT",
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					"full_name": editContact.full_name,
+					"email": editContact.email,
+					"agenda_slug": "agendaJoseRegueiro",
+					"address":editContact.address,
+					"phone":editContact.phone,
+				})
+
+			};
+				fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, editOptions)
+				.then(response => response.json())
+	},
+
+			deleteAllContacts: () =>  {
+				const deleteOptions = {
+					method: "DELETE",
+					headers: { 'Content-Type': 'application/json'  },
+					
+				};
+				fetch(`https://playground.4geeks.com/apis/fake/contact/agenda/agendaJoseRegueiro`, deleteOptions)
+					console.log("Esta funcionado")
+					.then(response => response.json())
+					.then(( data =>{ 
+						console.log(data)
+						fetch("https://playground.4geeks.com/apis/fake/contact/agenda/agendaJoseRegueiro")
+							.then((response) => response.json())
+							.then((data) => {
+								setStore({ contact: data });
+							})
+						}))
+	},
+
+				getRamdomAvatar: () =>{
+					 let randomAvatarNumber = Math.floor(Math.random() * 10);
+					 return `https://randomuser.me/api/portraits/lego/${randomAvatarNumber}.jpg`
+					 
+				},
 
 			
 			

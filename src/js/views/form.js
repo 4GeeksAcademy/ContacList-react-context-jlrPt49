@@ -11,25 +11,27 @@ export const Form = () => {
 	const [phone, setPhone] = useState("");
 	const [address, setAddress] = useState("");
 
-	const inputNombre = (e) =>{
-		setName(e.target.value)
-		actions.cambiarNombre(e.target.value)
+	const inputNombre = (eName) =>{
+		setName(eName.target.value)
+		
 	};
 
-	const inputMail = (i) =>{
-		setMail(i.target.value)
-		actions.cambiarNombre(i.target.value)
+	const inputMail = (eMail) =>{
+		setMail(eMail.target.value)
+		
 	};
 
-	const inputPhone = (o) =>{
-		setPhone(o.target.value)
-		actions.cambiarNombre(o.target.value)
+	const inputPhone = (ePhone) =>{
+		setPhone(ePhone.target.value)
+		
 	};
 
-	const inputAddress = (u) =>{
-		setAddress(u.target.value)
-		actions.cambiarNombre(u.target.value)
+	const inputAddress = (eAddress) =>{
+		setAddress(eAddress.target.value)
+		
 	};
+
+
 
 
 
@@ -79,6 +81,10 @@ export const Form = () => {
 			<button>boton pa volver</button>
 		</Link>
 		</div>
+
+
+
+		
 
 		</>
 
