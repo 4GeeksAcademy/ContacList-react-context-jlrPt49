@@ -64,9 +64,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 
 			};
-				fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, editOptions)
-				.then(response => response.json())
-	},
+			fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, editOptions)
+			.then(response => response.json())
+			.then(console.log(`https://playground.4geeks.com/apis/fake/contact/${id}`));
+	},	
 
 			deleteAllContacts: () =>  {
 				const deleteOptions = {

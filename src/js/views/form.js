@@ -50,44 +50,50 @@ export const Form = () => {
 	}
 
 	return (
-		<>
-		<h1>Add a new contact</h1>
-		<div className="container">
-		<label>Full name</label>
-		<input onChange={inputNombre} value={name} placeholder="Full name"></input>
-		</div>
+        <>
+            <div className="container text-center">
+                <h1>Add a new contact</h1>
+            </div>
 
-		<div className="container">
-		<label>Email</label>
-		<input onChange={inputMail} value={mail} placeholder="Email"></input>
-		</div>
+            <div className=" row ms-5 p-3">
+                <div className="col-12">
+                    <label>Full name</label>
+                </div>
+                <div className="col-12 ">
+                    <input className="inputs mx-auto" onChange={inputNombre} value={name} placeholder="Full name"></input>
+                </div>
 
-		<div className="container">
-		<label>Phone</label>
-		<input onChange={inputPhone} value={phone} placeholder="Phone"></input>
-		</div>
+                <div className="col-12 mt-3">
+                    <label>Email</label>
+                </div>
+                <div className="col-12">
+                    <input className="inputs mx-auto" onChange={inputMail} value={mail} placeholder="Email"></input>
+                </div>
 
-		<div className="container">
-		<label>Address</label>
-		<input onChange={inputAddress} value={address} placeholder="Address"></input>
-		</div>
+                <div className="col-12 mt-3">
+                    <label>Phone</label>
+                </div>
+                <div className="col-12">
+                    <input className="inputs mx-auto" onChange={inputPhone} value={phone} placeholder="Phone"></input>
+                </div>
 
-		<div className="container">
-		<button onClick={handleSave}>Save</button>
-		</div>
+                <div className="col-12 mt-3">
+                    <label>Address</label>
+                </div>
+                <div className="col-12">
+                    <input className="inputs mx-auto" onChange={inputAddress} value={address} placeholder="Address"></input>
+                </div>
 
-		<div className="container">
-		<Link to="/">
-			<button>boton pa volver</button>
-		</Link>
-		</div>
+                <div className="col-12 mt-3">
+                    <button className="saveButton" style={{width:"90%"}} onClick={handleSave}>Save</button>
+                </div>
 
-
-
-		
-
-		</>
-
-
-	);
+                <div className="container mt-3">
+                    <Link to="/">
+                        <button className="saveButton">Return to contacs</button>
+                    </Link>
+                </div>
+            </div>
+        </>
+    );
 };
